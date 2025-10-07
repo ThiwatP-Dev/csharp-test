@@ -28,7 +28,7 @@ public class UnitTest1
     [Fact]
     public async Task CreateShouldExists()
     {
-        
+
         var user = new CreateUserDto
         {
             UserName = "1",
@@ -59,5 +59,12 @@ public class UnitTest1
 
         var users = await _userService.Get();
         Assert.Single(users);
+    }
+    
+    [Fact]
+    public async Task GetShouldNotFind()
+    {
+        var users = await _userService.Get();
+        Assert.Empty(users);
     }
 }
