@@ -27,8 +27,12 @@ public class UsersController(IUserSerivce userSerivce) : ControllerBase
     public async Task<IActionResult> Get()
     {
         var users = await _userSerivce.Get();
+        if (users.Count != 0)
+        {
+            return Ok(users);
+        }
 
-        return Ok(users);
+        return NoContent();
     }
 
     [HttpGet("{id}")]
